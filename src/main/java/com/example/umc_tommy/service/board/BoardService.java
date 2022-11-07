@@ -1,8 +1,8 @@
 package com.example.umc_tommy.service.board;
 
-import com.example.umc_tommy.dto.Pagination;
 import com.example.umc_tommy.model.dto.DefaultRes;
 import com.example.umc_tommy.model.dto.req.board.BoardRequest;
+import com.example.umc_tommy.model.dto.req.board.UpdateBoardRequest;
 import com.example.umc_tommy.model.dto.res.board.BoardResponse;
 import com.example.umc_tommy.model.dto.res.board.SimpleBoardResponse;
 import com.example.umc_tommy.model.entity.board.Board;
@@ -11,7 +11,6 @@ import com.example.umc_tommy.repository.board.BoardRepository;
 import com.example.umc_tommy.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -27,18 +26,18 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final UserRepository userRepository;
 
-    public DefaultRes<List<SimpleBoardResponse>> getBoardList(Pageable pageable) {
-        Page<Board> boardList = boardRepository.findAll(pageable);
+    public DefaultRes<List<SimpleBoardResponse>> getBoardList( ) {
+        List<Board> boardList = boardRepository.findAll();
 
         if (boardList.isEmpty()) {
             return DefaultRes.response(HttpStatus.OK.value(),"데이터 없음");
         }
 
-        return DefaultRes.response(HttpStatus.OK.value(),"조회 성공", getSimpleBoardResponseList(boardList), new Pagination(boardList));
+        return DefaultRes.response(HttpStatus.OK.value(),"조회 성공", getSimpleBoardResponseList(boardList));
     }
 
     @NotNull
-    private List<SimpleBoardResponse> getSimpleBoardResponseList(Page<Board> boardList) {
+    private List<SimpleBoardResponse> getSimpleBoardResponseList(List<Board> boardList) {
         List<SimpleBoardResponse> simpleBoardResponseList = new LinkedList<>();
 
         for(Board board : boardList){
@@ -78,7 +77,7 @@ public class BoardService {
         else return DefaultRes.response(HttpStatus.OK.value(), "등록 실패(사용자 정보 없음)");
     }
 
-    public DefaultRes updateBoard(BoardRequest request) {
+    public DefaultRes updateBoard(UpdateBoardRequest request) {
         Optional<User> user = userRepository.findById(request.getUserId());
 
         if(user.isPresent()){

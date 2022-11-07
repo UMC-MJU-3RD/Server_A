@@ -12,10 +12,14 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateProductRequest {
+public class UpdateBoardRequest {
 
     @NotEmpty
     private Long userId;
+
+    @NotEmpty
+    private Long boardId;
+
     @NotEmpty
     private String title;
     @NotEmpty

@@ -28,6 +28,6 @@ public class UserRequest {
     private String phoneNumber;
 
     @NotNull
-    private Role role;
+    private String role;
 
 }

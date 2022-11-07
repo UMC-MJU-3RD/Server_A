@@ -16,10 +16,11 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class User extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // pk 생성을 데이터베이스에 위임
+    @GeneratedValue(strategy = GenerationType.AUTO) // pk 생성을 데이터베이스에 위임
     @Column(name = "user_id")
     private Long id;
 
@@ -39,9 +40,7 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Grade grade = Grade.GRATEFUL;
 
-    private String token; // 리프레시 토큰
-
-    private String profileUrl;
+    private String profileUrl = null;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
@@ -67,10 +66,6 @@ public class User extends BaseEntity {
                 ", grade='" + grade + '\'' +
                 super.toString() +
                 '}';
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.token = refreshToken;
     }
 
     public void setPassword(String password) {

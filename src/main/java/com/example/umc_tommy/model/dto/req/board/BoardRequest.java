@@ -18,9 +18,6 @@ public class BoardRequest {
     private Long userId;
 
     @NotEmpty
-    private Long boardId;
-
-    @NotEmpty
     private String title;
     @NotEmpty
     private String content;
