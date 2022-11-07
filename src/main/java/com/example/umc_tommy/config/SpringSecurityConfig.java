@@ -1,5 +1,6 @@
 package com.example.umc_tommy.config;
 
+import com.example.umc_tommy.filter.JwtRequestFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable() // API 서버이기 때문에 로그인 창 불필요
                 .csrf().disable()      // non-browser clients 만을 위한 서비스라면, stateless 하기 때문에 csrf를 disable 해도 좋다.
                 .cors().configurationSource(source()).and()
+                .authorizeHttpRequests() //인가에 대한 설정
                 .antMatchers("/api/token/**").permitAll()
                 .anyRequest().authenticated();
 
