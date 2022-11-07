@@ -1,5 +1,7 @@
-package com.example.umc_tommy.model.entity;
+package com.example.umc_tommy.model.entity.user;
 
+import com.example.umc_tommy.model.entity.BaseEntity;
+import com.example.umc_tommy.model.entity.board.Board;
 import com.example.umc_tommy.model.enums.Grade;
 import com.example.umc_tommy.model.enums.Role;
 import lombok.Builder;
@@ -7,11 +9,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // pk 생성을 데이터베이스에 위임
@@ -37,6 +42,9 @@ public class User extends BaseEntity{
     private String token; // 리프레시 토큰
 
     private String profileUrl;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Board> boardList = new ArrayList<>();
 
     @Builder
     public User(String email, String nickName, Role role, String phoneNumber) {

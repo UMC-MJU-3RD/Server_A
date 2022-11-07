@@ -1,6 +1,6 @@
 package com.example.umc_tommy.service.user;
 
-import com.example.umc_tommy.model.entity.User;
+import com.example.umc_tommy.model.entity.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

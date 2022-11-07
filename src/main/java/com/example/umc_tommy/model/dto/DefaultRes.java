@@ -1,5 +1,6 @@
 package com.example.umc_tommy.model.dto;
 
+import com.example.umc_tommy.dto.Pagination;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,9 @@ public class DefaultRes<T> {
     // API 응답 데이터
     private T data;
 
+    // 페이징 처리
+    private Pagination pagination;
+
     // 상태 코드 + 부가 설명 반환
     public static <T> DefaultRes<T> response(final Integer statusCode, final String Message){
         return (DefaultRes<T>)DefaultRes.builder()
@@ -34,4 +38,15 @@ public class DefaultRes<T> {
                 .data(data)
                 .build();
     }
+
+    // 상태 코드 + 부가 설명 + 응답 데이터 + 페이징 처리 반환
+    public static <T> DefaultRes<T> response(final Integer statusCode, final String Message, final T data, final Pagination pagination){
+        return (DefaultRes<T>)DefaultRes.builder()
+                .statusCode(statusCode)
+                .Message(Message)
+                .data(data)
+                .pagination(pagination)
+                .build();
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.example.umc_tommy.service.user;
 
-import com.example.umc_tommy.model.entity.User;
-import com.example.umc_tommy.repository.user.UserRepository;
+import com.example.umc_tommy.model.entity.user.User;
+import com.example.umc_tommy.service.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

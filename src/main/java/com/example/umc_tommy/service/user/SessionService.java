@@ -2,9 +2,9 @@ package com.example.umc_tommy.service.user;
 
 import com.example.umc_tommy.model.dto.DefaultRes;
 import com.example.umc_tommy.model.dto.ReplaceTokenResponseDto;
-import com.example.umc_tommy.model.entity.User;
+import com.example.umc_tommy.model.entity.user.User;
 import com.example.umc_tommy.model.enums.Role;
-import com.example.umc_tommy.repository.user.UserRepository;
+import com.example.umc_tommy.service.repository.user.UserRepository;
 import com.example.umc_tommy.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;

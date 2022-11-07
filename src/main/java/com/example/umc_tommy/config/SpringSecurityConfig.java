@@ -36,6 +36,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().configurationSource(source()).and()
                 .authorizeHttpRequests() //인가에 대한 설정
                 .antMatchers("/api/token/**").permitAll()
+                .antMatchers("/api/boards").permitAll()
                 .anyRequest().authenticated();
 
     }

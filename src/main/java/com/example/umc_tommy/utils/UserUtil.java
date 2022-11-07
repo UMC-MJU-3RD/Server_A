@@ -1,6 +1,6 @@
 package com.example.umc_tommy.utils;
 
-import com.example.umc_tommy.model.entity.User;
+import com.example.umc_tommy.model.entity.user.User;
 import com.example.umc_tommy.service.user.UserDetails;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
