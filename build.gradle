@@ -34,6 +34,9 @@ dependencies {
     implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+
+    // 개발 환경에서 h2 db 사용
+    runtimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {

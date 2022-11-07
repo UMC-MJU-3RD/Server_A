@@ -36,8 +36,8 @@ public class BoardReply extends BaseEntity {
         this.comment = comment;
     }
 
-    public BoardReply updateBoard(UpdateBoardReplyRequest request) {
-        this.comment = request.getComment();
-        return this;
-    }
+   // public BoardReply updateBoard(UpdateBoardReplyRequest request) {
+   //     this.comment = request.getComment();
+   //     return this;
+   // }
 }
