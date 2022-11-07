@@ -8,7 +8,7 @@ import com.example.umc_tommy.model.dto.res.board.SimpleBoardResponse;
 import com.example.umc_tommy.model.entity.board.Board;
 import com.example.umc_tommy.model.entity.user.User;
 import com.example.umc_tommy.repository.board.BoardRepository;
-import com.example.umc_tommy.service.repository.user.UserRepository;
+import com.example.umc_tommy.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

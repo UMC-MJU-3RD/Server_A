@@ -6,7 +6,6 @@ import com.example.umc_tommy.model.dto.req.board.UpdateProductRequest;
 import com.example.umc_tommy.model.dto.res.board.BoardResponse;
 import com.example.umc_tommy.model.dto.res.board.SimpleBoardResponse;
 import com.example.umc_tommy.service.board.BoardService;
-import com.example.umc_tommy.utils.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -38,20 +37,20 @@ public class BoardController {
     }
 
     @PostMapping("/boards")
-    public ResponseEntity<DefaultRes> Board(@Valid @RequestBody BoardRequest request){
+    public ResponseEntity<DefaultRes> createBoard(@Valid @RequestBody BoardRequest request){
         return new ResponseEntity<>(boardService.createBoard(request), HttpStatus.OK);
     }
 
 
     @PatchMapping (value = "/boards")
-    public ResponseEntity<DefaultRes> updateProduct(@Valid @RequestBody BoardRequest request){
+    public ResponseEntity<DefaultRes> updateBoard(@Valid @RequestBody BoardRequest request){
         return new ResponseEntity<>(boardService.updateBoard(request), HttpStatus.OK);
     }
 
 
     // soft-delete
     @DeleteMapping  (value = "/boards/{boardId}")
-    public ResponseEntity<DefaultRes> deleteProduct(Long boardId){
-        return new ResponseEntity<>(boardService.deleteBoard(boardId, UserUtil.getId()), HttpStatus.OK);
+    public ResponseEntity<DefaultRes> deleteBoard(Long boardId,  @RequestParam("userId") Long userId){
+        return new ResponseEntity<>(boardService.deleteBoard(boardId, userId), HttpStatus.OK);
     }
 }

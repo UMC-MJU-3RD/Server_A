@@ -47,11 +47,12 @@ public class User extends BaseEntity {
     private List<Board> boardList = new ArrayList<>();
 
     @Builder
-    public User(String email, String nickName, Role role, String phoneNumber) {
+    public User(String email, String nickName, Role role, String phoneNumber, String password) {
         this.email = email;
         this.nickName = nickName;
         this.role = role;
         this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 
     @Override
