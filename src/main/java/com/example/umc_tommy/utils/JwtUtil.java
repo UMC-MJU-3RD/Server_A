@@ -1,6 +1,5 @@
 package com.example.umc_tommy.utils;
 
-import com.example.umc_tommy.model.enums.Grade;
 import com.example.umc_tommy.model.enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
