@@ -1,6 +1,11 @@
 package com.example.demo.src.user.model;
 
+import com.example.demo.src.board.model.Board;
 import lombok.*;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter // 해당 클래스에 대한 접근자 생성
 @Setter // 해당 클래스에 대한 설정자 생성
@@ -10,9 +15,30 @@ import lombok.*;
  * GetUserRes는 클라이언트한테 response줄 때 DTO고(DTO란 DB의 정보를 Service나 Controller등에 보낼때 사용하는 객체를 의미한다.)
  * User 클래스는 스프링에서 사용하는 Objec이다.(내부에서 사용하기 위한 객체라고 보면 된다.)
  */
+@NoArgsConstructor
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userIdx;
     private String email;
     private String password;
     private String nickname;
+
+    public User(int userIdx, String nickname, String email, String password){
+        this.userIdx = userIdx;
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String nickname, String email, String password){
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Board> boardList = new ArrayList<>();
 }
