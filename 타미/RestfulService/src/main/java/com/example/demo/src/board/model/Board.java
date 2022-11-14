@@ -18,6 +18,6 @@ public class Board {
 
     private String content;
 
-    private boolean is_deleted;
+    private int is_deleted;
 
 }

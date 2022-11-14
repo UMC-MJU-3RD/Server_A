@@ -36,36 +36,36 @@ public class BoardDao {
 
     // 게시글 삭제
     public int deleteBoard(PatchIsDeletedReq patchIsDeletedReq) {
-        String modifyBoardQuery = "update Board set isDeleted = ? where boardIdx = ? ";
-        Object[] modifyBoardParams = new Object[]{patchIsDeletedReq.is_deleted(), patchIsDeletedReq.getBoardIdx()};
+        String modifyBoardQuery = "update Board set isDeleted = 1 where boardIdx = ? and userIdx = ? ";
+        Object[] modifyBoardParams = new Object[]{patchIsDeletedReq.getBoardIdx(), patchIsDeletedReq.getUserIdx()};
 
         return this.jdbcTemplate.update(modifyBoardQuery, modifyBoardParams);
     }
 
     // 게시판 내의 게시글 목록 전체 조회
-    public List<GetBoardRes> getBoards() {
-        String getBoardsQuery = "select * from Board";
+    public List<GetBoardRes> getBoardList() {
+        String getBoardsQuery = "select * from Board where isDeleted = 0";
         return this.jdbcTemplate.query(getBoardsQuery,
                 (rs, rowNum) -> new GetBoardRes(
                         rs.getInt("boardIdx"),
-                        rs.getString("nickname"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getBoolean("isDeleted"))
+                        rs.getString("nickname"),
+                        rs.getInt("isDeleted"))
         );
     }
 
     // 해당 title을 갖는 게시글 조회
     public List<GetBoardRes> getBoardsByTitle(String title) {
-        String getUsersByTitleQuery = "select * from Board where title like ? and isDeleted=0";
+        String getUsersByTitleQuery = "select * from Board where title like ? and isDeleted = 0";
         String getUsersByTitleParams = "%"+title+"%";
         return this.jdbcTemplate.query(getUsersByTitleQuery,
                 (rs, rowNum) -> new GetBoardRes(
                         rs.getInt("boardIdx"),
-                        rs.getString("nickname"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getBoolean("isDeleted")),
+                        rs.getString("nickname"),
+                        rs.getInt("isDeleted")),
                 getUsersByTitleParams);
     }
 
@@ -76,10 +76,10 @@ public class BoardDao {
         return this.jdbcTemplate.queryForObject(getBoardQuery,
                 (rs, rowNum) -> new GetBoardRes(
                         rs.getInt("boardIdx"),
-                        rs.getString("nickname"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getBoolean("isDeleted")),
+                        rs.getString("nickname"),
+                        rs.getInt("isDeleted")),
                 getBoardParams);
     }
 }

@@ -4,6 +4,7 @@ package com.example.demo.src.board.model;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 public class PostBoardReq {
 
-    @NotEmpty
+    @NotNull
     private int userIdx;
 
     @NotEmpty

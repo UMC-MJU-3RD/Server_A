@@ -3,6 +3,7 @@ package com.example.demo.src.board.model;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -10,8 +11,12 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PatchIsDeletedReq {
 
-    @NotEmpty
+    @NotNull
+    private int userIdx;
+
+    @NotNull
     private int boardIdx;
 
-    private boolean is_deleted;
+    @NotNull
+    private int isDeleted;
 }

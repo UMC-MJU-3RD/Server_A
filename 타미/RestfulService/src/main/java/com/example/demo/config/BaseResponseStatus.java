@@ -57,7 +57,8 @@ public enum BaseResponseStatus {
     PASSWORD_DECRYPTION_ERROR(false, 4012, "비밀번호 복호화에 실패하였습니다."),
     EMPTY_BOARD_BY_BOARD_ID(false, 4013 , "게시글이 없습니다." ),
 
-    EMPTY_BOARDS(false, 4014 , "게시글 목록이 존재하지 않습니다.");
+    EMPTY_BOARDS(false, 4014 , "게시글 목록이 존재하지 않습니다."),
+    ALREADY_DELETED_BOARD(false, 4015 , "이미 삭제된 글입니다.");
 
 
     // 5000 : 필요시 만들어서 쓰세요

@@ -16,9 +16,9 @@ public class BoardProvider {
     private final BoardDao boardDao;
 
     // 게시판 내의 게시글 목록 전체 조회
-    public List<GetBoardRes> getBoards() throws BaseException {
+    public List<GetBoardRes> getBoardList() throws BaseException {
         try {
-            List<GetBoardRes> getBoardRes = boardDao.getBoards();
+            List<GetBoardRes> getBoardRes = boardDao.getBoardList();
             return getBoardRes;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);

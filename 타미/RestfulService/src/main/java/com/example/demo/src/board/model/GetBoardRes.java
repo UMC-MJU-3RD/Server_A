@@ -13,6 +13,6 @@ public class GetBoardRes {
     private String title;
     private String content;
     private String nickname;
-    private boolean is_deleted;
+    private int is_deleted;
 
 }
