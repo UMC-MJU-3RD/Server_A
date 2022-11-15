@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/에스핀/boardCRUD" />
+        <option name="gradleJvm" value="corretto-11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/에스핀/boardCRUD" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/에스핀/boardCRUDTemplate" />
+        <option name="gradleJvm" value="corretto-11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/에스핀/boardCRUDTemplate" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/타미/RestfulService" />
+        <option name="gradleJvm" value="corretto-11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/타미/RestfulService" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
