@@ -58,6 +58,8 @@ public enum BaseResponseStatus {
     EMPTY_BOARD_BY_BOARD_ID(false, 4013 , "게시글이 없습니다." ),
 
     EMPTY_BOARDS(false, 4014 , "게시글 목록이 존재하지 않습니다."),
+    EMPTY_REPLIES(false, 4014 , "댓글 목록이 존재하지 않습니다."),
+
     ALREADY_DELETED_BOARD(false, 4015 , "이미 삭제된 글입니다.");
 
 
