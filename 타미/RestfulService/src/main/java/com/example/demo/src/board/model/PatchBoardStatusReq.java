@@ -2,14 +2,13 @@ package com.example.demo.src.board.model;
 
 import lombok.*;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PatchIsDeletedReq {
+public class PatchBoardStatusReq {
 
     @NotNull
     private int userIdx;
