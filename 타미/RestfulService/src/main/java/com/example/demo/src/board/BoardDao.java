@@ -50,7 +50,6 @@ public class BoardDao {
                         rs.getInt("boardIdx"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getString("nickname"),
                         rs.getInt("isDeleted"))
         );
     }
@@ -64,7 +63,6 @@ public class BoardDao {
                         rs.getInt("boardIdx"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getString("nickname"),
                         rs.getInt("isDeleted")),
                 getUsersByTitleParams);
     }
@@ -78,7 +76,6 @@ public class BoardDao {
                         rs.getInt("boardIdx"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getString("nickname"),
                         rs.getInt("isDeleted")),
                 getBoardParams);
     }

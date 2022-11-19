@@ -19,6 +19,6 @@ public class PatchBoardReq {
     @NotEmpty
     private String content;
 
-    @NotEmpty
+    @NotNull
     private int isDeleted;
 }

@@ -12,7 +12,6 @@ public class GetBoardRes {
     private int boardIdx;
     private String title;
     private String content;
-    private String nickname;
     private int is_deleted;
 
 }
