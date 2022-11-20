@@ -8,5 +8,5 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PatchStatusReq {
     private int boardIdx;
-    private boolean status;
+    private String status;
 }
