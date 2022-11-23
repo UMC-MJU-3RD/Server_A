@@ -4,13 +4,11 @@ package com.example.demo.src.board.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @Getter
 @NoArgsConstructor
 public class Board {
 
-    private Long id;
+    private Long boardIdx;
 
     private int userIdx;
 

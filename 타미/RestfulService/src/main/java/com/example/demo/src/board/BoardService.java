@@ -61,7 +61,7 @@ public class BoardService {
         return new BaseResponse(EMPTY_BOARD_BY_BOARD_ID);
     }
 
-    public BaseResponse deleteBoard(PatchIsDeletedReq request) throws BaseException {
+    public BaseResponse deleteBoard(PatchBoardStatusReq request) throws BaseException {
         if(request.getIsDeleted() == 1)
             return new BaseResponse(HttpStatus.BAD_REQUEST, "이미 삭제된 글입니다.", HttpStatus.BAD_REQUEST.value());
 

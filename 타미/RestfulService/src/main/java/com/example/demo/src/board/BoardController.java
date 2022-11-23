@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/app")
@@ -36,7 +35,7 @@ public class BoardController {
 
     // soft-delete
     @DeleteMapping (value = "/boards")
-    public BaseResponse deleteBoard(@Valid @RequestBody PatchIsDeletedReq request) throws BaseException {
+    public BaseResponse deleteBoard(@Valid @RequestBody PatchBoardStatusReq request) throws BaseException {
         return boardService.deleteBoard(request);
     }
 }

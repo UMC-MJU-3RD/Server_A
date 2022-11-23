@@ -2,7 +2,7 @@ package com.example.demo.src.board;
 
 import com.example.demo.src.board.model.GetBoardRes;
 import com.example.demo.src.board.model.PatchBoardReq;
-import com.example.demo.src.board.model.PatchIsDeletedReq;
+import com.example.demo.src.board.model.PatchBoardStatusReq;
 import com.example.demo.src.board.model.PostBoardReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,7 +35,7 @@ public class BoardDao {
     }
 
     // 게시글 삭제
-    public int deleteBoard(PatchIsDeletedReq patchIsDeletedReq) {
+    public int deleteBoard(PatchBoardStatusReq patchIsDeletedReq) {
         String modifyBoardQuery = "update Board set isDeleted = 1 where boardIdx = ? and userIdx = ? ";
         Object[] modifyBoardParams = new Object[]{patchIsDeletedReq.getBoardIdx(), patchIsDeletedReq.getUserIdx()};
 
@@ -50,7 +50,6 @@ public class BoardDao {
                         rs.getInt("boardIdx"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getString("nickname"),
                         rs.getInt("isDeleted"))
         );
     }
@@ -64,7 +63,6 @@ public class BoardDao {
                         rs.getInt("boardIdx"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getString("nickname"),
                         rs.getInt("isDeleted")),
                 getUsersByTitleParams);
     }
@@ -78,7 +76,6 @@ public class BoardDao {
                         rs.getInt("boardIdx"),
                         rs.getString("title"),
                         rs.getString("content"),
-                        rs.getString("nickname"),
                         rs.getInt("isDeleted")),
                 getBoardParams);
     }
