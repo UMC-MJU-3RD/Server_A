@@ -28,11 +28,14 @@ public enum BaseResponseStatus {
     // [POST] /users
     POST_USERS_EMPTY_EMAIL(false, 2015, "이메일을 입력해주세요."),
     POST_USERS_INVALID_EMAIL(false, 2016, "이메일 형식을 확인해주세요."),
-    POST_USERS_EXISTS_EMAIL(false,2017,"중복된 이메일입니다."),
+    POST_USERS_EMPTY_PW(false, 2017, "비밀번호를 입력해주세요."),
+    POST_USERS_INVALID_PW(false, 2018, "비밀번호는 영문, 숫자, 특수문자 포함 8자 이상이어야 합니다."),
+    POST_USERS_EMPTY_NICKNAME(false, 2019, "닉네임을 입력해주세요."),
+    POST_USERS_INVALID_NICKNAME(false, 2020, "닉네임은 두글자 이상이어야 합니다."),
 
     // [POST] /boards
-    POST_BOARDS_EMPTY_TITLE(false,2020,"제목을 입력해주세요."),
-    POST_BOARDS_EMPTY_CONTENT(false,2021,"내용을 입력해주세요."),
+    POST_BOARDS_EMPTY_TITLE(false,2025,"제목을 입력해주세요."),
+    POST_BOARDS_EMPTY_CONTENT(false,2026,"내용을 입력해주세요."),
 
 
 
@@ -44,7 +47,9 @@ public enum BaseResponseStatus {
 
     // [POST] /users
     DUPLICATED_EMAIL(false, 3013, "중복된 이메일입니다."),
-    FAILED_TO_LOGIN(false,3014,"없는 아이디거나 비밀번호가 틀렸습니다."),
+    DUPLICATED_NICKNAME(false, 3014, "이미 존재하는 닉네임입니다."),
+    FAILED_TO_LOGIN(false,3015,"없는 아이디거나 비밀번호가 틀렸습니다."),
+    BLACK_USER(false,3016,"정지된 사용자입니다."),
 
 
 

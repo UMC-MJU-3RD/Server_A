@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.example.demo.config.BaseResponseStatus.*;
 
@@ -32,6 +33,7 @@ public class BoardService {
     }
 
     // 게시글 등록
+    @Transactional
     public PostBoardRes createBoard(PostBoardReq postBoardReq) throws BaseException {
         if (postBoardReq.getTitle().equals("") || postBoardReq.getTitle() == null) {
             throw new BaseException(POST_BOARDS_EMPTY_TITLE);
@@ -47,6 +49,7 @@ public class BoardService {
     }
 
     // 게시글 수정(Patch)
+    @Transactional
     public void modifyBoard(PatchBoardReq patchUserReq) throws BaseException {
         try {
             int result = boardDao.modifyBoard(patchUserReq);
@@ -59,6 +62,7 @@ public class BoardService {
     }
 
     // 게시글 삭제(Patch)
+    @Transactional
     public void deleteBoard(PatchStatusReq patchStatusReq) throws BaseException {
         try {
             int result = boardDao.deleteBoard(patchStatusReq);

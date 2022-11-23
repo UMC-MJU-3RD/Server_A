@@ -18,15 +18,12 @@ import java.util.List;
  */
 public class UserDao {
 
-    // *********************** 동작에 있어 필요한 요소들을 불러옵니다. *************************
-
     private JdbcTemplate jdbcTemplate;
 
     @Autowired //readme 참고
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-    // ******************************************************************************
 
     /**
      * DAO관련 함수코드의 전반부는 크게 String ~~~Query와 Object[] ~~~~Params, jdbcTemplate함수로 구성되어 있습니다.(보통은 동적 쿼리문이지만, 동적쿼리가 아닐 경우, Params부분은 없어도 됩니다.)
@@ -75,12 +72,20 @@ public class UserDao {
                 checkEmailParams); // checkEmailQuery, checkEmailParams를 통해 가져온 값(intgud)을 반환한다. -> 쿼리문의 결과(존재하지 않음(False,0),존재함(True, 1))를 int형(0,1)으로 반환됩니다.
     }
 
-    // 회원정보 변경
-    public int modifyUserName(PatchUserReq patchUserReq) {
+    // 닉네임 변경
+    public int modifyNickName(PatchNickNameReq patchNickNameReq) {
         String modifyUserNameQuery = "update User set nickname = ? where userIdx = ? "; // 해당 userIdx를 만족하는 User를 해당 nickname으로 변경한다.
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getNickname(), patchUserReq.getUserIdx()}; // 주입될 값들(nickname, userIdx) 순
+        Object[] modifyUserNameParams = new Object[]{patchNickNameReq.getNickname(), patchNickNameReq.getUserIdx()}; // 주입될 값들(nickname, userIdx) 순
 
         return this.jdbcTemplate.update(modifyUserNameQuery, modifyUserNameParams); // 대응시켜 매핑시켜 쿼리 요청(생성했으면 1, 실패했으면 0) 
+    }
+
+    // 비밀번호 변경
+    public int modifyPassword(PatchPasswordReq patchPasswordReq) {
+        String modifyUserNameQuery = "update User set password = ? where userIdx = ? "; // 해당 userIdx를 만족하는 User를 해당 password로 변경한다.
+        Object[] modifyUserNameParams = new Object[]{patchPasswordReq.getPassword(), patchPasswordReq.getUserIdx()}; // 주입될 값들(password, userIdx) 순
+
+        return this.jdbcTemplate.update(modifyUserNameQuery, modifyUserNameParams); // 대응시켜 매핑시켜 쿼리 요청(생성했으면 1, 실패했으면 0)
     }
 
 
@@ -107,7 +112,7 @@ public class UserDao {
                 (rs, rowNum) -> new GetUserRes(
                         rs.getInt("userIdx"),
                         rs.getString("nickname"),
-                        rs.getString("Email"),
+                        rs.getString("email"),
                         rs.getString("password")) // RowMapper(위의 링크 참조): 원하는 결과값 형태로 받기
         ); // 복수개의 회원정보들을 얻기 위해 jdbcTemplate 함수(Query, 객체 매핑 정보)의 결과 반환(동적쿼리가 아니므로 Parmas부분이 없음)
     }
@@ -120,7 +125,7 @@ public class UserDao {
                 (rs, rowNum) -> new GetUserRes(
                         rs.getInt("userIdx"),
                         rs.getString("nickname"),
-                        rs.getString("Email"),
+                        rs.getString("email"),
                         rs.getString("password")), // RowMapper(위의 링크 참조): 원하는 결과값 형태로 받기
                 getUsersByNicknameParams); // 해당 닉네임을 갖는 모든 User 정보를 얻기 위해 jdbcTemplate 함수(Query, 객체 매핑 정보, Params)의 결과 반환
     }
@@ -133,7 +138,7 @@ public class UserDao {
                 (rs, rowNum) -> new GetUserRes(
                         rs.getInt("userIdx"),
                         rs.getString("nickname"),
-                        rs.getString("Email"),
+                        rs.getString("email"),
                         rs.getString("password")), // RowMapper(위의 링크 참조): 원하는 결과값 형태로 받기
                 getUserParams); // 한 개의 회원정보를 얻기 위한 jdbcTemplate 함수(Query, 객체 매핑 정보, Params)의 결과 반환
     }

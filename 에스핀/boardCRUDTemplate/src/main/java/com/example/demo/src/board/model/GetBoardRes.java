@@ -11,8 +11,8 @@ import lombok.Setter;
 
 public class GetBoardRes {
     private int boardIdx;
-    private String userId;
+    private String writer;
     private String title;
     private String content;
-    private boolean status;
+    private String status;
 }

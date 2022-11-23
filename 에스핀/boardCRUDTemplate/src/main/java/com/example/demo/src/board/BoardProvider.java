@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,9 +29,10 @@ public class BoardProvider {
     }
 
     // 게시글 전체 조회
-    public List<GetBoardRes> getBoards() throws BaseException {
+    @Transactional
+    public List<GetBoardRes> getBoards(int page) throws BaseException {
         try {
-            List<GetBoardRes> getBoardRes = boardDao.getBoards();
+            List<GetBoardRes> getBoardRes = boardDao.getBoards(page);
             return getBoardRes;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
@@ -38,9 +40,10 @@ public class BoardProvider {
     }
 
     // 해당 title을 갖는 게시글 조회
-    public List<GetBoardRes> getBoardsByTitle(String title) throws BaseException {
+    @Transactional
+    public List<GetBoardRes> getBoardsByTitle(String title, int page) throws BaseException {
         try {
-            List<GetBoardRes> getBoardsRes = boardDao.getBoardsByTitle(title);
+            List<GetBoardRes> getBoardsRes = boardDao.getBoardsByTitle(title, page);
             return getBoardsRes;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
@@ -49,6 +52,7 @@ public class BoardProvider {
 
 
     // 해당 boardIdx를 갖는 게시글 조회
+    @Transactional
     public GetBoardRes getBoard(int boardIdx) throws BaseException {
         try {
             GetBoardRes getBoardRes = boardDao.getBoard(boardIdx);
